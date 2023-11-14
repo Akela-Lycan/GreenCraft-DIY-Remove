@@ -12,7 +12,14 @@
     <form id="form1" runat="server">
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <asp:Label ID="lbl_Home" runat="server" Text="Home"></asp:Label>
+                &nbsp;&nbsp;<asp:Label ID="lbl_Products" runat="server" Text="Products"></asp:Label>
+                &nbsp;&nbsp;<asp:Label ID="lbl_Services" runat="server" Text="Services"></asp:Label>
+                &nbsp;&nbsp;<asp:Label ID="lbl_Feedback" runat="server" Text="Feedback"></asp:Label>
+                &nbsp;&nbsp;<asp:Label ID="lbl_Classes" runat="server" Text="Classes"></asp:Label>
+                &nbsp;&nbsp;<asp:Label ID="lbl_Login" runat="server" Text="Login"></asp:Label>
             </asp:ContentPlaceHolder>
+        
         </div>
     </form>
 </body>
