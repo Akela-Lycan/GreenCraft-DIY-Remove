@@ -128,7 +128,7 @@ first child of the left and right table columns */
 ----------------------------------------------------------*/
 
 div.hideSkiplink {
-    background-color: palegreen;
+    background-color: mediumseagreen;
     width: 100%;
 }
 
@@ -144,9 +144,9 @@ div.menu {
     }
 
         div.menu ul li a, div.menu ul li a:visited {
-            background-color: palegreen;
+            background-color: mediumseagreen;
             border: 1px #4e667d solid;
-            color: darkslateblue;
+            color: darkblue;
             display: block;
             line-height: 1.35em;
             padding: 4px 20px;
