@@ -28,12 +28,9 @@
                 </h1>
             </div>                               
                     </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
                     <td>         
                 <asp:ImageButton ID="IB_Cart" runat="server" Height="25px" ImageUrl="~/Images/shoppingcart.jpg" Width="27px"/>
                     </td>
-                    <td>&nbsp;</td>
                 </tr>
             </table>
             <br />
