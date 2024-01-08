@@ -12,7 +12,7 @@ namespace GreenCraft_DIY
 {
     public class Payment
     {
-        string _connStr = ConfigurationManager.ConnectionStrings["PaymentContext"].ConnectionString;
+        string _connStr = ConfigurationManager.ConnectionStrings["GreenCraft"].ConnectionString;
         private string _PaymentId = null;
         private decimal _Amount = 0;
         private string _CardNumber = "";
@@ -90,6 +90,27 @@ namespace GreenCraft_DIY
             get { return _CVV; }
             set { _CVV = value; }
         }
+
+        public int PaymentInsert()
+        {
+            int result = 0;
+            string queryStr = "INSERT INTO Payments(CardType,CardHolderName,CardNumber,ExpiryDate,CVV)"
+                + "values(@CardType,@CardHolderName,@CardNumber,@ExpiryDate,@CVV)";
+
+            SqlConnection conn = new SqlConnection(_connStr);
+            SqlCommand cmd = new SqlCommand(queryStr, conn);
+            cmd.Parameters.AddWithValue("@CardType", this.CardType);
+            cmd.Parameters.AddWithValue("@CardHolderName", this.CardHolderName);
+            cmd.Parameters.AddWithValue("@CardNumber", this.CardNumber);
+            cmd.Parameters.AddWithValue("@ExpiryDate", this.ExpiryDate);
+            cmd.Parameters.AddWithValue("@CVV", this.CVV);
+
+            conn.Open();
+            result += cmd.ExecuteNonQuery();
+            conn.Close();
+
+            return result;
+        }
         public Payment getPayment(string paymentID)
         {
             Payment paymentDetail = null;
@@ -97,7 +118,7 @@ namespace GreenCraft_DIY
             decimal amount;
             Int16 cvv;
             DateTime expiry_date, payment_date;
-            string queryStr = "SELECT * FROM Payments WHERE PaymentId = @PaymentId";
+            string queryStr = "SELECT * FROM Payments WHERE Payment_Id = @PaymentId";
 
             SqlConnection conn = new SqlConnection(_connStr);
             SqlCommand cmd = new SqlCommand(queryStr, conn);

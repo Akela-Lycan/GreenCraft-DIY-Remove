@@ -29,9 +29,10 @@
     <asp:TextBox ID="txtCVV" runat="server"></asp:TextBox>
     <br />
     <br />
-    Total amount: <asp:Label ID="lblamount" runat="server"></asp:Label>
+    Total amount: <asp:Label ID="lblamount" runat="server"></asp:Label><br />
+    <asp:Label ID="lblpaymentID" runat="server"></asp:Label>
     <br />
     <br />
-    <asp:Button ID="btnSumbit" runat="server" Text="Submit" />
+    <asp:Button ID="btnSumbit" runat="server" Text="Submit" OnClick="btnSumbit_Click" />
      <br />
 </asp:Content>

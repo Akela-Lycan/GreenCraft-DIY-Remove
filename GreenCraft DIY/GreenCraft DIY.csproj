@@ -67,10 +67,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Payment.mdf" />
-    <Content Include="App_Data\Payment_log.ldf">
-      <DependentUpon>Payment.mdf</DependentUpon>
+    <Content Include="App_Data\GreenCraft.mdf" />
+    <Content Include="App_Data\GreenCraft_log.ldf">
+      <DependentUpon>GreenCraft.mdf</DependentUpon>
     </Content>
+    <Content Include="Images\shoppingcart.jpg" />
     <Content Include="Payment.aspx" />
     <Content Include="PaymentView.aspx" />
     <Content Include="Web.config" />
@@ -110,6 +111,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
