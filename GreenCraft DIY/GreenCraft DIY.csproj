@@ -67,6 +67,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\GreenCraft-Database.mdf" />
+    <Content Include="App_Data\GreenCraft-Database_log.ldf">
+      <DependentUpon>GreenCraft-Database.mdf</DependentUpon>
+    </Content>
     <Content Include="Images\shoppingcart.jpg" />
     <Content Include="Style\Site.css" />
     <Content Include="Web.config" />
