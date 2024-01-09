@@ -78,13 +78,22 @@ namespace GreenCraft_DIY
         protected global::System.Web.UI.WebControls.Label lblamount;
 
         /// <summary>
-        /// lblpaymentID control.
+        /// lblpayment_date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblpaymentID;
+        protected global::System.Web.UI.WebControls.Label lblpayment_date;
+
+        /// <summary>
+        /// lblStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatus;
 
         /// <summary>
         /// btnSumbit control.

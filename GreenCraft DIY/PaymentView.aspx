@@ -8,7 +8,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:GridView ID="gvPayment" runat="server" AutoGenerateColumns="False" CssClass="auto-style3" Width="515px" OnSelectedIndexChanged="gvPayment_SelectedIndexChanged">
+    <asp:GridView ID="gvPayment" runat="server" DataKeyNames="Payment_Id" AutoGenerateColumns="False" CssClass="auto-style3" Width="515px" OnSelectedIndexChanged="gvPayment_SelectedIndexChanged" OnRowEditing="gvPayment_RowEditing" OnRowUpdating="gvPayment_RowUpdating">
         <Columns>
             <asp:BoundField DataField="Payment_Id" HeaderText="Payment Ref" />
             <asp:BoundField DataField="Amount" HeaderText="Amount($)" />
@@ -19,7 +19,7 @@
             <asp:BoundField DataField="PaymentDate" HeaderText="Payment Date" />
             <asp:BoundField DataField="Status" HeaderText="Status" />
             <asp:BoundField DataField="CVV" HeaderText="CVV" />
-            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" />
+            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" EditText="Update" />
         </Columns>
     </asp:GridView>
 

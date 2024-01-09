@@ -14,19 +14,19 @@ namespace GreenCraft_DIY
     {
         string _connStr = ConfigurationManager.ConnectionStrings["GreenCraft"].ConnectionString;
         private string _PaymentId = null;
-        private decimal _Amount = 0;
+        private string _Amount = "";
         private string _CardNumber = "";
         private string _CardType = null;
-        private DateTime _ExpiryDate = DateTime.MinValue;
+        private string _ExpiryDate = "";
         private string _CardHolderName = string.Empty;
-        private DateTime _PaymentDate = DateTime.MinValue;
+        private string _PaymentDate = "";
         private string _Status = "";
-        private Int16 _CVV = 0;
+        private string _CVV = "";
 
         public Payment()
         {
         }
-        public Payment(string paymentID, decimal amount, string cardNumber, string cardType, DateTime expiryDate, string cardHolderName, DateTime paymentDate, string status, Int16 cvv)
+        public Payment(string paymentID, string amount, string cardNumber, string cardType, string expiryDate, string cardHolderName,string paymentDate, string status, string cvv)
         {
             _PaymentId = paymentID;
             _Amount = amount;
@@ -38,20 +38,20 @@ namespace GreenCraft_DIY
             _Status = status;
             _CVV = cvv;
         }
-        public Payment(decimal amount, string cardNumber, string cardType, DateTime expiryDate, string cardHolderName, DateTime paymentDate, string status, Int16 cvv)
+        public Payment(string amount, string cardNumber, string cardType, string expiryDate, string cardHolderName,string paymentDate, string status, string cvv)
                : this(null, amount, cardNumber, cardType, expiryDate, cardHolderName, paymentDate, status, cvv)
         {
         }
         public Payment(string paymentID)
-            : this(paymentID, 0, "", "", DateTime.Now, "", DateTime.Now, "", 0)
-        {  
+            : this(paymentID, "", "", "", "", "", "", "", "")
+        {
         }
         public string Payment_Id
         {
             get { return _PaymentId; }
             set { _PaymentId = value; }
         }
-        public decimal Amount
+        public string Amount
         {
             get { return _Amount; }
             set { _Amount = value; }
@@ -64,9 +64,9 @@ namespace GreenCraft_DIY
         public string CardType
         {
             get { return _CardType; }
-            set {_CardType = value; }
+            set { _CardType = value; }
         }
-        public DateTime ExpiryDate
+        public string ExpiryDate
         {
             get { return _ExpiryDate; }
             set { _ExpiryDate = value; }
@@ -76,7 +76,7 @@ namespace GreenCraft_DIY
             get { return _CardHolderName; }
             set { _CardHolderName = value; }
         }
-        public DateTime PaymentDate
+        public string PaymentDate
         {
             get { return _PaymentDate; }
             set { _PaymentDate = value; }
@@ -86,7 +86,8 @@ namespace GreenCraft_DIY
             get { return _Status; }
             set { _Status = value; }
         }
-        public Int16 CVV        {
+        public string CVV
+        {
             get { return _CVV; }
             set { _CVV = value; }
         }
@@ -94,30 +95,60 @@ namespace GreenCraft_DIY
         public int PaymentInsert()
         {
             int result = 0;
-            string queryStr = "INSERT INTO Payments(CardType,CardHolderName,CardNumber,ExpiryDate,CVV)"
-                + "values(@CardType,@CardHolderName,@CardNumber,@ExpiryDate,@CVV)";
+            string queryStr = "INSERT INTO Payments(Amount,CardNumber,CardType,ExpiryDate,CardHolderName,PaymentDate,Status,CVV)"
+                + "values(@Amount,@CardNumber,@CardType,@ExpiryDate,@CardHolderName,@PaymentDate,@Status,@CVV)";
+
+            try
+            {
+                SqlConnection conn = new SqlConnection(_connStr);
+                SqlCommand cmd = new SqlCommand(queryStr, conn);
+                cmd.Parameters.AddWithValue("@Amount","20.50" );
+                cmd.Parameters.AddWithValue("@CardNumber", this.CardNumber);
+                cmd.Parameters.AddWithValue("@CardType", this.CardType);          
+                cmd.Parameters.AddWithValue("@ExpiryDate", this.ExpiryDate);
+                cmd.Parameters.AddWithValue("@CardHolderName", this.CardHolderName);
+                cmd.Parameters.AddWithValue("@PaymentDate", DateTime.Today);
+                cmd.Parameters.AddWithValue("@Status", "Completed");
+                cmd.Parameters.AddWithValue("@CVV", this.CVV); 
+
+                conn.Open();
+                result += cmd.ExecuteNonQuery();
+                conn.Close();
+
+                return result;
+            } catch (SqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return 0;
+            }
+        }
+
+        public int PaymentUpdate(string pId,string card_number, string card_type, string expiry_date, string pName, string Pcvv)
+        {
+            //string queryStr = "UPDATE Payments SET" + "CardType = @CardType," + "CardHolderName = @CardHolderName," + "CardNumber = @CardNumber" + "ExpiryDate = @ExpiryDate" + "CVV = @CVV" + " WHERE Payment_Id = @PaymentId";
+            string queryStr = "UPDATE Payments SET CardNumber=@CardNumber, CardType=@CardType, ExpiryDate=@ExpiryDate, CardHolderName=@CardHolderName, CVV=@CVV WHERE Payment_Id=@PaymentId";
 
             SqlConnection conn = new SqlConnection(_connStr);
             SqlCommand cmd = new SqlCommand(queryStr, conn);
-            cmd.Parameters.AddWithValue("@CardType", this.CardType);
-            cmd.Parameters.AddWithValue("@CardHolderName", this.CardHolderName);
-            cmd.Parameters.AddWithValue("@CardNumber", this.CardNumber);
-            cmd.Parameters.AddWithValue("@ExpiryDate", this.ExpiryDate);
-            cmd.Parameters.AddWithValue("@CVV", this.CVV);
+            cmd.Parameters.AddWithValue("@PaymentId", pId);
+            cmd.Parameters.AddWithValue("@CardHolderName", pName);
+            cmd.Parameters.AddWithValue("@CardType", card_type);
+            cmd.Parameters.AddWithValue("@CardNumber", card_number);
+            cmd.Parameters.AddWithValue("@ExpiryDate", expiry_date);
+            cmd.Parameters.AddWithValue("@CVV", Pcvv);
 
             conn.Open();
-            result += cmd.ExecuteNonQuery();
+            int nofRow = 0;
+            nofRow = cmd.ExecuteNonQuery();
             conn.Close();
-
-            return result;
+            return nofRow;
         }
         public Payment getPayment(string paymentID)
         {
             Payment paymentDetail = null;
-            string card_number, card_type, card_holder_name, status;
-            decimal amount;
-            Int16 cvv;
-            DateTime expiry_date, payment_date;
+            string card_number, card_type, card_holder_name, status,cvv,amount;
+            
+            string expiry_date, payment_date;
             string queryStr = "SELECT * FROM Payments WHERE Payment_Id = @PaymentId";
 
             SqlConnection conn = new SqlConnection(_connStr);
@@ -129,16 +160,16 @@ namespace GreenCraft_DIY
 
             if (dr.Read())
             {
-                amount = decimal.Parse(dr["Amount"].ToString());
+                amount = dr["Amount"].ToString();
                 card_number = dr["CardNumber"].ToString();
                 card_type = dr["CardType"].ToString();
-                expiry_date = DateTime.Parse(dr["ExpiryDate"].ToString());
+                expiry_date = dr["ExpiryDate"].ToString();
                 card_holder_name = dr["CardHolderName"].ToString();
-                payment_date = DateTime.Parse(dr["PaymentDate"].ToString());
+                payment_date = dr["PaymentDate"].ToString();
                 status = dr["Status"].ToString();
-                cvv = Int16.Parse(dr["CVV"].ToString());
+                cvv = dr["CVV"].ToString();
 
-                paymentDetail = new Payment(paymentID,amount, card_number, card_type, expiry_date, card_holder_name, payment_date, status,cvv);
+                paymentDetail = new Payment(paymentID, amount, card_number, card_type, expiry_date, card_holder_name, payment_date, status, cvv);
             }
             else
             {
@@ -154,10 +185,8 @@ namespace GreenCraft_DIY
         public List<Payment> GetPaymentAll()
         {
             List<Payment> paymentList = new List<Payment>();
-            string paymentID, card_number, card_type, card_holder_name, status;
-            decimal amount;
-            Int16 cvv;
-            DateTime expiry_date, payment_date;
+            string paymentID, card_number, card_type, card_holder_name, status, amount,cvv;
+            string expiry_date, payment_date;
 
             string queryStr = "SELECT * FROM Payments";
 
@@ -170,15 +199,15 @@ namespace GreenCraft_DIY
             while (dr.Read())
             {
                 paymentID = dr["Payment_Id"].ToString();
-                amount = decimal.Parse(dr["Amount"].ToString());
+                amount = dr["Amount"].ToString();
                 card_number = dr["CardNumber"].ToString();
                 card_type = dr["CardType"].ToString();
-                expiry_date = DateTime.Parse(dr["ExpiryDate"].ToString());
+                expiry_date = dr["ExpiryDate"].ToString();
                 card_holder_name = dr["CardHolderName"].ToString();
-                payment_date = DateTime.Parse(dr["PaymentDate"].ToString());
+                payment_date = dr["PaymentDate"].ToString();
                 status = dr["Status"].ToString();
-                cvv = Int16.Parse(dr["CVV"].ToString());
-                Payment p = new Payment(paymentID, amount, card_number, card_type, expiry_date, card_holder_name, payment_date, status,cvv);
+                cvv = dr["CVV"].ToString();
+                Payment p = new Payment(paymentID, amount, card_number, card_type, expiry_date, card_holder_name, payment_date, status, cvv);
                 paymentList.Add(p);
             }
             conn.Close();
