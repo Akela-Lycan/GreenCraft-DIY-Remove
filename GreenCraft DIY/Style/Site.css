@@ -32,15 +32,7 @@ p {
 /* HEADINGS   
 ----------------------------------------------------------*/
 
-h1, h2, h3, h4, h5, h6 {
-    font-size: 1.5em;
-    color: #666666;
-    font-variant: small-caps;
-    text-transform: none;
-    font-weight: 200;
-    margin-bottom: 0px;
-    background-color: lightseagreen;
-}
+
 
 h1 {
     font-size: 1.6em;
@@ -117,7 +109,7 @@ first child of the left and right table columns */
 
 .footer {
     color: #4e5766;
-    padding: 8px 0px 0px 0px;
+    padding 0px;
     margin: 0px auto;
     text-align: center;
     line-height: normal;

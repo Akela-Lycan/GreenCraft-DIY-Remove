@@ -51,7 +51,9 @@
         </div>
     </div>
     <div class="footer">
-        
+        <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - Green Craft</p>
+        </footer>
     </div>
 </form>
 </body>
