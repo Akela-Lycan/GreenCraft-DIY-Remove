@@ -81,6 +81,7 @@ namespace GreenCraft_DIY
             Payment p = new Payment();
             string paymentID = gvPayment.DataKeys[e.RowIndex].Value.ToString();
             result = p.PaymentDelete(paymentID);
+            
             if (result > 0)
             {
                 Response.Write("<script>alert('Payment Remove successfully');</script>");
@@ -97,5 +98,7 @@ namespace GreenCraft_DIY
             gvPayment.EditIndex = -1;
             bind();
         }
+
+        
     }
 }

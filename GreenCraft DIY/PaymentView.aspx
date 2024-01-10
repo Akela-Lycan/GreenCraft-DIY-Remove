@@ -25,11 +25,13 @@
                     </asp:SqlDataSource>
                
                     <br />
+      
                
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("CardType") %>'></asp:Label>
                     <asp:DropDownList ID="ddlcard_type" runat="server" ></asp:DropDownList>
+
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="ExpiryDate" HeaderText="Expiry Date" />
@@ -37,7 +39,12 @@
             <asp:BoundField DataField="PaymentDate" HeaderText="Payment Date" />
             <asp:BoundField DataField="Status" HeaderText="Status" />
             <asp:BoundField DataField="CVV" HeaderText="CVV" />
-            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" EditText="Update" />
+            <asp:CommandField ShowEditButton="True" EditText="Update" />
+            <asp:TemplateField ShowHeader="False">
+                <ItemTemplate>
+                    <asp:LinkButton ID="lbDelete" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" OnClientClick="return confirm('Are you sure you want to delete this payment?');"></asp:LinkButton>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
    
