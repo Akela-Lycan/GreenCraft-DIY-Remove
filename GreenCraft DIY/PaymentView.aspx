@@ -15,13 +15,13 @@
             <asp:BoundField DataField="CardNumber" HeaderText="Card Number" />
             <asp:TemplateField HeaderText="Card Type">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="ddlcard_type" runat="server" DataSourceID="SqlDataSource3" DataTextField="CardType" DataValueField="CardType" AutoPostBack="True">
+                    <asp:DropDownList ID="ddlcard_type" runat="server" DataSourceID="SqlDataSource3" DataTextField="CardType" DataValueField="CardType" SelectedValue='<%# Bind("CardType") %>'>
                         <asp:ListItem>Master</asp:ListItem>
                         <asp:ListItem>Visa</asp:ListItem>
                         <asp:ListItem>America Express</asp:ListItem>
                     </asp:DropDownList>
                     
-                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:GreenCraft %>" SelectCommand="SELECT [CardType] FROM [Payments]">
+                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:GreenCraft %>" SelectCommand="SELECT [CardType] FROM [CardType_Unique]">
                     </asp:SqlDataSource>
                
                     <br />
