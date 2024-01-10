@@ -45,17 +45,16 @@ namespace GreenCraft_DIY
             GridViewRow row = (GridViewRow)gvPayment.Rows[e.RowIndex];
             string id = gvPayment.DataKeys[e.RowIndex].Value.ToString();
             string pid = ((TextBox)row.Cells[0].Controls[0]).Text;
-            string card_number = ((TextBox)row.Cells[1].Controls[0]).Text;
+            string card_number = ((TextBox)row.Cells[2].Controls[0]).Text;
             //DropDownList ddlCardType = (DropDownList)gvPayment.Rows[e.RowIndex].FindControl("ddlCardType");
-
 
             DropDownList ddlcard_type = (DropDownList)gvPayment.Rows[e.RowIndex].FindControl("ddlCardType");
             if (ddlcard_type != null)
             {
                 string card_type = ddlcard_type.SelectedValue;
-                string expiry_date = ((TextBox)row.Cells[3].Controls[0]).Text;
-                string name = ((TextBox)row.Cells[4].Controls[0]).Text;
-                string cvv = ((TextBox)row.Cells[5].Controls[0]).Text;
+                string expiry_date = ((TextBox)row.Cells[4].Controls[0]).Text;
+                string name = ((TextBox)row.Cells[5].Controls[0]).Text;
+                string cvv = ((TextBox)row.Cells[8].Controls[0]).Text;
                 result = p.PaymentUpdate(pid, card_number, card_type, expiry_date, name, cvv);
 
             }

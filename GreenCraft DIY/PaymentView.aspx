@@ -13,7 +13,21 @@
             <asp:BoundField DataField="Payment_Id" HeaderText="Payment Ref" />
             <asp:BoundField DataField="Amount" HeaderText="Amount($)" />
             <asp:BoundField DataField="CardNumber" HeaderText="Card Number" />
-            <asp:BoundField DataField="CardType" HeaderText="Card Type" />
+            <asp:TemplateField HeaderText="Card Type">
+                <EditItemTemplate>
+                    <asp:DropDownList ID="ddlcard_type" runat="server" DataSourceID="SqlDataSource3" DataTextField="CardType" DataValueField="CardType">
+                    </asp:DropDownList>
+                    <asp:SqlDataSource runat="server"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+                    <br />
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:GreenCraft %>" SelectCommand="SELECT DISTINCT [CardType] FROM [Payments]"></asp:SqlDataSource>
+                </EditItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("CardType") %>'></asp:Label>
+                    <asp:DropDownList ID="ddlcard_type" runat="server"></asp:DropDownList>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField="ExpiryDate" HeaderText="Expiry Date" />
             <asp:BoundField DataField="CardHolderName" HeaderText="Name" />
             <asp:BoundField DataField="PaymentDate" HeaderText="Payment Date" />
@@ -22,5 +36,5 @@
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" EditText="Update" />
         </Columns>
     </asp:GridView>
-
+   
 </asp:Content>
