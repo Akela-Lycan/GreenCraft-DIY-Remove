@@ -8,24 +8,28 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:GridView ID="gvPayment" runat="server" DataKeyNames="Payment_Id" AutoGenerateColumns="False" CssClass="auto-style3" Width="515px" OnSelectedIndexChanged="gvPayment_SelectedIndexChanged" OnRowEditing="gvPayment_RowEditing" OnRowUpdating="gvPayment_RowUpdating">
+    <asp:GridView ID="gvPayment" runat="server" DataKeyNames="Payment_Id" AutoGenerateColumns="False" CssClass="auto-style3" Width="515px" OnSelectedIndexChanged="gvPayment_SelectedIndexChanged" OnRowEditing="gvPayment_RowEditing" OnRowUpdating="gvPayment_RowUpdating" OnRowCancelingEdit="gvPayment_RowCancelingEdit" OnRowDeleting="gvPayment_RowDeleting">
         <Columns>
             <asp:BoundField DataField="Payment_Id" HeaderText="Payment Ref" />
             <asp:BoundField DataField="Amount" HeaderText="Amount($)" />
             <asp:BoundField DataField="CardNumber" HeaderText="Card Number" />
             <asp:TemplateField HeaderText="Card Type">
                 <EditItemTemplate>
-                    <asp:DropDownList ID="ddlcard_type" runat="server" DataSourceID="SqlDataSource3" DataTextField="CardType" DataValueField="CardType">
+                    <asp:DropDownList ID="ddlcard_type" runat="server" DataSourceID="SqlDataSource3" DataTextField="CardType" DataValueField="CardType" AutoPostBack="True">
+                        <asp:ListItem>Master</asp:ListItem>
+                        <asp:ListItem>Visa</asp:ListItem>
+                        <asp:ListItem>America Express</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:SqlDataSource runat="server"></asp:SqlDataSource>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+                    
+                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:GreenCraft %>" SelectCommand="SELECT [CardType] FROM [Payments]">
+                    </asp:SqlDataSource>
+               
                     <br />
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server"></asp:SqlDataSource>
-                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:GreenCraft %>" SelectCommand="SELECT DISTINCT [CardType] FROM [Payments]"></asp:SqlDataSource>
+               
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("CardType") %>'></asp:Label>
-                    <asp:DropDownList ID="ddlcard_type" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlcard_type" runat="server" ></asp:DropDownList>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="ExpiryDate" HeaderText="Expiry Date" />
@@ -33,7 +37,7 @@
             <asp:BoundField DataField="PaymentDate" HeaderText="Payment Date" />
             <asp:BoundField DataField="Status" HeaderText="Status" />
             <asp:BoundField DataField="CVV" HeaderText="CVV" />
-            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" EditText="Update" />
+            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" EditText="Update" />
         </Columns>
     </asp:GridView>
    

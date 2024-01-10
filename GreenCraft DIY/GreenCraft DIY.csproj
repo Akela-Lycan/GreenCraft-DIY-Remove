@@ -73,6 +73,7 @@
     </Content>
     <Content Include="Images\shoppingcart.jpg" />
     <Content Include="Payment.aspx" />
+    <Content Include="PaymentSuccess.aspx" />
     <Content Include="PaymentView.aspx" />
     <Content Include="Style\Site.css" />
     <Content Include="Web.config" />
@@ -93,6 +94,13 @@
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
     <Compile Include="Payment.cs" />
+    <Compile Include="PaymentSuccess.aspx.cs">
+      <DependentUpon>PaymentSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentSuccess.aspx.designer.cs">
+      <DependentUpon>PaymentSuccess.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PaymentView.aspx.cs">
       <DependentUpon>PaymentView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

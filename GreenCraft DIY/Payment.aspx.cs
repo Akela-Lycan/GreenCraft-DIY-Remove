@@ -31,6 +31,8 @@ namespace GreenCraft_DIY
                 Response.Write("<script>alert('Insert successful');</script>");
             }
             else { Response.Write("<script>alert('Insert NOT successful');</script>"); }
+            Response.Redirect("PaymentSuccess.aspx");
         }
+        
     }
 }

@@ -55,8 +55,7 @@
          
         </div>
         <div class="footer">
-             <footer>
-                
+             <footer>   
                  <div class="ft-container">
                      <div class="social-media">
       <div>
@@ -89,9 +88,7 @@
   <a href="">About</a>
   <a href="">Contact</a>
   <a href="">Blog</a>
-  <a href="">Social</a>
-
-  </div>
+  <a href="">Social</a></div>
    <p> Copyright &copy; <%: DateTime.Now.Year %> Green Craft, All Rights Reserved.</p>
 </div>
 </footer>

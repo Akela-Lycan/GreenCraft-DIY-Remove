@@ -22,6 +22,7 @@ namespace GreenCraft_DIY
             List<Payment> paymentList = new List<Payment>();
             paymentList = aPayment.GetPaymentAll();
             gvPayment.DataSource = paymentList;
+            
             gvPayment.DataBind();
         }
 
@@ -43,22 +44,24 @@ namespace GreenCraft_DIY
             int result = 0;
             Payment p = new Payment();
             GridViewRow row = (GridViewRow)gvPayment.Rows[e.RowIndex];
+
             string id = gvPayment.DataKeys[e.RowIndex].Value.ToString();
             string pid = ((TextBox)row.Cells[0].Controls[0]).Text;
+            //string pa = ((TextBox)row.Cells[1].Controls[0]).Text;
             string card_number = ((TextBox)row.Cells[2].Controls[0]).Text;
-            //DropDownList ddlCardType = (DropDownList)gvPayment.Rows[e.RowIndex].FindControl("ddlCardType");
 
-            DropDownList ddlcard_type = (DropDownList)gvPayment.Rows[e.RowIndex].FindControl("ddlCardType");
+            DropDownList ddlcard_type = (DropDownList)gvPayment.Rows[e.RowIndex].FindControl("ddlcard_type");
+
             if (ddlcard_type != null)
             {
                 string card_type = ddlcard_type.SelectedValue;
+                
                 string expiry_date = ((TextBox)row.Cells[4].Controls[0]).Text;
                 string name = ((TextBox)row.Cells[5].Controls[0]).Text;
                 string cvv = ((TextBox)row.Cells[8].Controls[0]).Text;
                 result = p.PaymentUpdate(pid, card_number, card_type, expiry_date, name, cvv);
 
             }
-
 
             if (result > 0)
             {
@@ -68,6 +71,29 @@ namespace GreenCraft_DIY
             {
                 Response.Write("<script>alert('Payment NOT updated');</script>");
             }
+            gvPayment.EditIndex = -1;
+            bind();
+        }
+
+        protected void gvPayment_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int result = 0;
+            Payment p = new Payment();
+            string paymentID = gvPayment.DataKeys[e.RowIndex].Value.ToString();
+            result = p.PaymentDelete(paymentID);
+            if (result > 0)
+            {
+                Response.Write("<script>alert('Payment Remove successfully');</script>");
+            }
+            else
+            {
+                Response.Write("<script>alert('Payment Removal NOT successfully');</script>");
+            }
+            Response.Redirect("PaymentView.aspx");
+        }
+
+        protected void gvPayment_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
             gvPayment.EditIndex = -1;
             bind();
         }

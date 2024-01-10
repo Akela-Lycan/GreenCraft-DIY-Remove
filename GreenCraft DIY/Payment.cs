@@ -136,12 +136,33 @@ namespace GreenCraft_DIY
             cmd.Parameters.AddWithValue("@CardNumber", card_number);
             cmd.Parameters.AddWithValue("@ExpiryDate", expiry_date);
             cmd.Parameters.AddWithValue("@CVV", Pcvv);
-
+            
             conn.Open();
             int nofRow = 0;
             nofRow = cmd.ExecuteNonQuery();
             conn.Close();
             return nofRow;
+        }
+
+        public int PaymentDelete(string payment_id)
+        {
+            string queryStr = "DELETE FROM Payments WHERE Payment_Id=@PaymentId";
+            try
+            {
+                SqlConnection conn = new SqlConnection(_connStr);
+                SqlCommand cmd = new SqlCommand(queryStr, conn);
+                cmd.Parameters.AddWithValue("@PaymentId", payment_id);
+                conn.Open();
+                int nofRow = 0;
+                nofRow = cmd.ExecuteNonQuery();
+                // Response.Write("<script>alert('Delete successful');</script>");
+                conn.Close();
+                return nofRow;
+            }
+            catch (SqlException ex)
+            {
+                return 0;
+            }
         }
         public Payment getPayment(string paymentID)
         {
