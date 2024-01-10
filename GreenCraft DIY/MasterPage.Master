@@ -5,7 +5,7 @@
 <html>
     <head runat="server">
     <title></title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="C:\Users\alpha\OneDrive\Desktop\GreenCraft-DIY\GreenCraft-DIY\GreenCraft DIY\testStyle.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
     <style type="text/css">
