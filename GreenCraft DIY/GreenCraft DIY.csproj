@@ -74,6 +74,7 @@
     <Content Include="Images\shoppingcart.jpg" />
     <Content Include="Payment.aspx" />
     <Content Include="PaymentView.aspx" />
+    <Content Include="Style\Site.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
