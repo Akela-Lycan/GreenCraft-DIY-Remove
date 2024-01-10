@@ -52,7 +52,7 @@
     </div>
     <div class="footer">
         <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Green Craft</p>
+            <p>Copyright &copy; <%: DateTime.Now.Year %> Green Craft, All Rights Reserved.</p>
         </footer>
     </div>
 </form>
