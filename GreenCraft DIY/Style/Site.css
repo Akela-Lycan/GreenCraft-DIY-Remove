@@ -47,6 +47,8 @@ h2 {
 
 h3 {
     font-size: 1.2em;
+    display:inline-block;
+    float:left;
 }
 
 h4 {
@@ -93,24 +95,106 @@ first child of the left and right table columns */
         font-size: 2em;
     }
 
-.main {
-    padding: 0px 12px;
-    margin: 12px 8px 8px 8px;
-    min-height: 420px;
-}
 
-.leftCol {
-    padding: 6px 0px;
-    margin: 12px 8px 8px 8px;
-    width: 200px;
-    min-height: 200px;
-}
+
+
 
 .footer {
-    color: #4e5766;
-    padding 0px;
-    margin: 0px auto;
-    line-height: normal;
+    position: relative;
+    left: 0;
+    margin: 10px 0 0 0;
+    padding: 0;
+    /*width: 100%;*/
+    overflow: auto;
+    background-color: lightblue;
+    
+}
+div.ft-container {
+    width: 100%;
+    margin: 0;
+    padding: 20px 0;
+    overflow: auto;
+}
+div.social-media, div.product-list, div.company-info {
+  max-width: 100%;
+  display: inline-block;
+  float: left;
+}
+
+div.social-media {
+    width: 100%;
+    display: inline-block;
+}
+section#info {
+    position: relative;
+    top: 0;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.about-text {
+    width: 100%;
+    margin: 0;
+    padding: 0 30px;
+    display: inline-block;
+    text-align: justify;
+    color: #6C5347;
+    float: left;
+}
+
+    .about-text > h3 {
+        text-align: center;
+        margin: 0;
+        padding: 15px 0 10px;
+    }
+
+    .about-text > p {
+        font-weight: lighter;
+    }
+
+.info-list {
+    margin: 0;
+    padding: 0 0 10px 0;
+    overflow: auto;
+}
+
+h6.info-title {
+    
+    font-weight: lighter;
+    text-transform: uppercase;
+    border-bottom: 1px solid #FDA83E;
+}
+
+.info-list > li {
+    float: left;
+    margin-bottom: 10px;
+    padding: 0;
+    width: 30%;
+}
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.9;
+}
+.fa-facebook {
+    background: #007bb5;
+    color: white;
+}
+.fa-instagram {
+    background: #bc2a8d;
+    color: white;
+}
+.fa-linkedin {
+    background: #007bb5;
+    color: white;
 }
 
 
