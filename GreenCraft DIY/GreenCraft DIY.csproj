@@ -71,11 +71,19 @@
     <Content Include="App_Data\GreenCraft-Database_log.ldf">
       <DependentUpon>GreenCraft-Database.mdf</DependentUpon>
     </Content>
+    <Content Include="Customer_Login.aspx" />
     <Content Include="Images\shoppingcart.jpg" />
     <Content Include="Style\Site.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer_Login.aspx.cs">
+      <DependentUpon>Customer_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer_Login.aspx.designer.cs">
+      <DependentUpon>Customer_Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
