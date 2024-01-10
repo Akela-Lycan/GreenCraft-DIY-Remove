@@ -55,43 +55,27 @@
          
         </div>
         <div class="footer">
-             <footer>   
-                 <div class="ft-container">
-                     <div class="social-media">
-      <div>
-        <section id="info">
-        <div class="about-text">
-          <ul class="info-list">
-            <li>
-              <h6 class="info-title" style="font-size: 18px;">Address:</h6>
-              <p style="text-align: left;">110 Ang Mo Kio Ave 8, #3 - 20, Singapore 569110</p>
-            </li>
-            <li style="padding-left: 50px;">
-              <h6 class="info-title" style="font-size: 18px;">Phone:</h6>
-              <p style="text-align: left;">Office: 6819 2346</p>
-            </li>
-            <li>
-              <h6 class="info-title" style="font-size: 18px;">Social Media:</h6>
-              <p style="text-align: left;"><a href="#" class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                  <a href="#" class="insta"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                  <a href="#" class="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-              </p>
-            </li>
-          </ul>
+             <footer>
+    <div class="footer-container">
+        <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#">Product</a>
+            <a href="#">Contact</a>
+            <a href="#">Social</a>
         </div>
-      </section>
-      </div>
+        <div class="social-media-icons">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-instagram"></a>
+            <a href="#" class="fa fa-linkedin"></a>
+        </div>
+        <div class="contact-info">
+            <p><strong>Address:</strong> 110 Ang Mo Kio Ave 8, #3 - 20, Singapore 569110</p>
+            <p><strong>Office Phone:</strong> 6819 2346</p>
+        </div>
     </div>
-  <div class="footer-menu">
-
-  <a href="">Home</a>
-  <a href="">About</a>
-  <a href="">Contact</a>
-  <a href="">Blog</a>
-  <a href="">Social</a></div>
-   <p> Copyright &copy; <%: DateTime.Now.Year %> Green Craft, All Rights Reserved.</p>
-</div>
+    <p class="copyright">Copyright &copy; <%: DateTime.Now.Year %> Green Craft, All Rights Reserved.</p>
 </footer>
+
     </div>
    </form>
 </body>

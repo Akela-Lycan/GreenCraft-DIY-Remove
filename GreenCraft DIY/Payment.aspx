@@ -27,6 +27,7 @@
     <br />
     Expiry date:
     <asp:TextBox ID="txtExpiry" runat="server" style="font-size: small"></asp:TextBox>
+     <asp:RequiredFieldValidator ID="vldexpiry_date" runat="server" ControlToValidate="txtExpiry" ErrorMessage="Please enter your expiry date." ForeColor="Red"></asp:RequiredFieldValidator>
      <br />
     <br />
     CVV:

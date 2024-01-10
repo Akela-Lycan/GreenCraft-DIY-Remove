@@ -99,104 +99,44 @@ first child of the left and right table columns */
 
 
 
-.footer {
-    position: relative;
-    left: 0;
-    margin: 10px 0 0 0;
-    padding: 0;
-    /*width: 100%;*/
-    overflow: auto;
-    background-color: lightblue;
-    
-}
-/*div.ft-container {
-    width: 100%;
-    margin: 0;
+footer {
+    background-color: #4b6c9e;
+    color: white;
     padding: 20px 0;
-    overflow: auto;
-}*/
-div.social-media, div.product-list, div.company-info {
-  max-width: 100%;
-  display: inline-block;
-  float: left;
 }
 
-div.social-media {
-    width: 100%;
-    display: inline-block;
-}
-section#info {
-    position: relative;
-    top: 0;
-    /*width: 90%;*/
+.footer-container {
+    max-width: 960px;
     margin: 0 auto;
-    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.about-text {
-    width: 100%;
-    margin: 0;
-    padding: 0 30px;
-    display: inline-block;
-    text-align: justify;
-    color: #6C5347;
-    float: left;
-}
-
-    .about-text > h3 {
-        text-align: center;
-        margin: 0;
-        padding: 15px 0 10px;
-    }
-
-    .about-text > p {
-        font-weight: lighter;
-    }
-
-.info-list {
-    margin: 0;
-    padding: 0 0 10px 0;
-    overflow: auto;
-}
-
-h6.info-title {
-    
-    font-weight: lighter;
-    text-transform: uppercase;
-    border-bottom: 1px solid #FDA83E;
-}
-
-.info-list > li {
-    float: left;
-    margin-bottom: 10px;
-    padding: 0;
-    width: 30%;
-}
-.fa {
-  padding: 20px;
-  font-size: 30px;
-  width: 50px;
-  text-align: center;
-  text-decoration: none;
-  margin: 5px 2px;
-}
-
-.fa:hover {
-    opacity: 0.9;
-}
-.fa-facebook {
-    background: #007bb5;
+.footer-links a {
     color: white;
-}
-.fa-instagram {
-    background: #bc2a8d;
-    color: white;
-}
-.fa-linkedin {
-    background: #007bb5;
-    color: white;
+    top:0px;
+    margin-right: 20px;
+    text-decoration: none;
 }
 
+.social-media-icons a {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+    color: white;
+    text-decoration: none;
+
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+.copyright {
+    margin-top: 20px;
+}
 
 /* TAB MENU   
 ----------------------------------------------------------*/
@@ -328,3 +268,4 @@ div.accountInfo {
     text-align: right;
     padding-right: 10px;
 }
+

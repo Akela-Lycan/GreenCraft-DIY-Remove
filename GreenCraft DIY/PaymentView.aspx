@@ -8,7 +8,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:GridView ID="gvPayment" runat="server" DataKeyNames="Payment_Id" AutoGenerateColumns="False" CssClass="auto-style3" Width="515px" OnSelectedIndexChanged="gvPayment_SelectedIndexChanged" OnRowEditing="gvPayment_RowEditing" OnRowUpdating="gvPayment_RowUpdating" OnRowCancelingEdit="gvPayment_RowCancelingEdit" OnRowDeleting="gvPayment_RowDeleting">
+    <asp:GridView ID="gvPayment" runat="server" DataKeyNames="Payment_Id" AutoGenerateColumns="False" CssClass="auto-style3" Width="800px" OnSelectedIndexChanged="gvPayment_SelectedIndexChanged" OnRowEditing="gvPayment_RowEditing" OnRowUpdating="gvPayment_RowUpdating" OnRowCancelingEdit="gvPayment_RowCancelingEdit" OnRowDeleting="gvPayment_RowDeleting">
         <Columns>
             <asp:BoundField DataField="Payment_Id" HeaderText="Payment Ref" />
             <asp:BoundField DataField="Amount" HeaderText="Amount($)" />
