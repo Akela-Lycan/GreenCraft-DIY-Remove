@@ -12,14 +12,27 @@ namespace GreenCraft_DIY
         
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            
         }
 
         protected void btnSumbit_Click(object sender, EventArgs e)
         {
             int result = 0;
 
-           // Payment p = new Payment(decimal.Parse(lblamount.Text),,ddlCardType.SelectedValue, txtName.Text, txtcardnumber.Text, txtExpiry.Text, txtCVV.Text);
+            
+            Payment p = new Payment(lblamount.Text,txtcardnumber.Text,ddlCardType.SelectedItem.Text,
+           txtExpiry.Text, txtName.Text, lblpayment_date.Text, lblStatus.Text, txtCVV.Text);
+            result = p.PaymentInsert();
+
+
+            if (result > 0)
+            {
+                
+                Response.Write("<script>alert('Insert successful');</script>");
+            }
+            else { Response.Write("<script>alert('Insert NOT successful');</script>"); }
+            Response.Redirect("PaymentSuccess.aspx");
         }
+        
     }
 }

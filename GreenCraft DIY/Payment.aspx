@@ -2,6 +2,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:ScriptManager runat="server"></asp:ScriptManager>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/t1Ee1zRW31PtI9Gi4aH6pAmdX6WOBl5NJ2dI=" crossorigin="anonymous"></script>
+
+
     <h1>Payment</h1>
      <b>Payment card type:</b>
     <asp:DropDownList ID="ddlCardType" runat="server" AutoPostBack="True" Font-Size="Medium" Width="168px">
@@ -18,11 +22,12 @@
     <br />
     Credit Card Number:
     <asp:TextBox ID="txtcardnumber" runat="server" style="font-size: small"></asp:TextBox>
-    <asp:RequiredFieldValidator ID="vldcard" runat="server" ControlToValidate="txtcardnumber" ErrorMessage="Please enter your card number." style="font-size: small"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="vldcard" runat="server" ControlToValidate="txtcardnumber" ErrorMessage="Please enter your card number." style="font-size: small" ForeColor="Red"></asp:RequiredFieldValidator>
     <br />
     <br />
     Expiry date:
     <asp:TextBox ID="txtExpiry" runat="server" style="font-size: small"></asp:TextBox>
+     <asp:RequiredFieldValidator ID="vldexpiry_date" runat="server" ControlToValidate="txtExpiry" ErrorMessage="Please enter your expiry date." ForeColor="Red"></asp:RequiredFieldValidator>
      <br />
     <br />
     CVV:
@@ -30,8 +35,9 @@
     <br />
     <br />
     Total amount: <asp:Label ID="lblamount" runat="server"></asp:Label><br />
-    <asp:Label ID="lblpaymentID" runat="server"></asp:Label>
+    <asp:Label ID="lblpayment_date" runat="server"></asp:Label>
     <br />
+    <asp:Label ID="lblStatus" runat="server"></asp:Label>
     <br />
     <asp:Button ID="btnSumbit" runat="server" Text="Submit" OnClick="btnSumbit_Click" />
      <br />
